@@ -1,0 +1,31 @@
+
+<body>
+<div class="container">
+<h1>Valores UF </h1>  
+
+    <div>
+    
+    <%= line_chart @response_body['serie'] %>
+    </div>
+
+    <table class="table table-sm table-striped"
+        <thead class="thead-dark">
+            <tr>
+                <th>Fecha</th>
+                <th>Valor UF</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% @response_body['serie'].each do |item| %>
+            <tr>
+                <td><%= DateTime.parse(item['fecha'][0...10]).strftime('%d-%m-%Y') %></td>
+                <td>$<%= item['valor'] %></td>
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+
+</div>
+
+
+</body>
